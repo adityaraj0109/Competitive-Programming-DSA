@@ -9,24 +9,27 @@ void debugMode()
 #endif
 }
 
-TreeNode *searchBST(TreeNode *root, int val)
+TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
 {
-    TreeNode* temp=root;
-    while (temp!=NULL)
+    if (root==NULL)
     {
-        if (temp->val==val)
+        return NULL;
+    }
+    while (root!=NULL)
+    {
+        if (root->val<p->val && root->val<q->val)
         {
-            return temp;
+            root=root->right;
         }
-        if (temp->val>val)
+        else if (root->val>p->val && root->val>q->val)
         {
-            temp=temp->left;
+            root=root->left;
         }
         else{
-            temp=temp->right;
+            return root;
         }
     }
-    return NULL;
+    return root;
 }
 
 int main()
