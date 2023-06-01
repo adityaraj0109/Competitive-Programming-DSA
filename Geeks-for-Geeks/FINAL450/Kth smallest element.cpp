@@ -18,16 +18,18 @@ void debugMode()
 
 int kthSmallest(int arr[], int l, int r, int k)
 {
-    priority_queue<int>maxh;
-    for (int i = l; i <=r; i++)
+    priority_queue<int>pq;
+    for(int i=l;i<k;i++){
+        pq.push(arr[i]);
+    }
+    for (int i = k; i <=r; i++)
     {
-        maxh.push(arr[i]);
-        if (maxh.size()>k)
-        {
-            maxh.pop();
+        if(pq.top() > arr[i]){
+            pq.pop();
+            pq.push(arr[i]);
         }
     }
-    return maxh.top();
+    return pq.top();
 }
 
 int main()
