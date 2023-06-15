@@ -31,7 +31,7 @@ int solution(int amount, vector<int> &coins, int index){
 int change(int amount, vector<int> &coins)
 {
     memset(dp,-1,sizeof(dp));
-    int index=coins.size();
+    int index=coins.size()-1;
     return solution(amount,coins,index);
 }
 
