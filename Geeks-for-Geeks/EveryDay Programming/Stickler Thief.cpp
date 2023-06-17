@@ -10,21 +10,20 @@ void debugMode()
 #endif
 }
 
-int solution(int index, vector<int> &dp, vector<int> &cost)
-{
+int solution(int arr[], int index,vector<int> &dp){
+    if(index==0) return arr[0];
     if(index<0) return 0;
     if(dp[index]!=-1) return dp[index];
-    int ans=solution(index-1,dp,cost)+cost[index];
-    ans=min(ans,solution(index-2,dp,cost)+cost[index]);
+
+    int ans=solution(arr,index-2,dp)+arr[index];
+    ans=max(ans,solution(arr,index-1,dp));
     return dp[index]=ans;
 }
 
-int minCostClimbingStairs(vector<int> &cost)
+int FindMaxSum(int arr[], int n)
 {
-    cost.push_back(0);
-    int n = cost.size()-1;
-    vector<int> dp(n+1, -1);
-    return solution(n, dp, cost);
+    vector<int>dp(n,-1);
+    return solution(arr,n-1,dp);
 }
 
 int main()
