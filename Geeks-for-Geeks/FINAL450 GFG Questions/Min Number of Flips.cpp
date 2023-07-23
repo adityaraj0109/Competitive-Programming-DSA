@@ -9,17 +9,20 @@ void debugMode()
 #endif
 }
 
-string removeConsecutiveCharacter(string S)
+int minFlips (string S)
 {
-    string str="";
-    str+=S[0];
-    for (int i = 1; i < S.length(); i++)
+    int n=S.size();
+    int ans=0;
+    for (int i = 0; i < n; i++)
     {
-        if(S[i]!=S[i-1]){
-            str+=S[i];
+        if(i%2==0){
+            if(S[i]=='1') ans++;
+        }
+        else{
+            if(S[i]=='0') ans++;
         }
     }
-    return str;
+    return min(ans,n-ans);
 }
 
 int main()
