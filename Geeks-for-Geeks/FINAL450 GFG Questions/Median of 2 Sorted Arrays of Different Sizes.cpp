@@ -9,7 +9,7 @@ void debugMode()
 #endif
 }
 
-    double MedianOfArrays(vector<int> &array1, vector<int> &array2)
+double MedianOfArrays(vector<int> &array1, vector<int> &array2)
 {
     if(array1.size()>array2.size()) return MedianOfArrays(array2,array1);
     int n1=array1.size();
