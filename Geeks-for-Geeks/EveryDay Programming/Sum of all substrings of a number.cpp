@@ -9,18 +9,19 @@ void debugMode()
 #endif
 }
 
-void merge(long long arr1[], long long arr2[], int n, int m)
+long long sumSubstrings(string s)
 {
-    int i=n-1;
-    int j=0;
-    while (i>=0 && j<m && arr1[i]>arr2[j])
+    int n=s.size();
+    int mod=1e9+7;
+    vector<long long>temp(n);
+    temp[0]=s[0]-'0';
+    long long sum=temp[0];
+    for (int i = 1; i < n; i++)
     {
-        swap(arr1[i],arr2[j]);
-        i--;
-        j++;
+        temp[i]=(10*temp[i-1]+(i+1)*(s[i]-'0'))%mod;
+        sum=(sum+temp[i])%mod;
     }
-    sort(arr1,arr1+n);
-    sort(arr2,arr2+m);
+    return sum;
 }
 
 int main()
