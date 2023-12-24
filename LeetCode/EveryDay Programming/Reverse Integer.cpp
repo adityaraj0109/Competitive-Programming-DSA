@@ -12,21 +12,16 @@ void debugMode()
 
 int reverse(int x)
 {
-    int a=2147483647;
-    int b=-2147483648;
-    string s=to_string(x);
-    std::reverse(s.begin(),s.end());
-    long long int n=stoll(s);
-    if (x<0)
-    {
-        n=-n;
+    int a=INT_MIN;
+    int b=INT_MAX;
+    int ans=0;
+    while (x != 0) {
+        int rem=x%10;
+        x=x/10;
+        if ((ans<a/10) || (ans>b/10)) return 0;
+        ans=ans*10+rem;
     }
-    if (n>a || n<b)
-    {
-        return 0;
-    }
-    x=n;
-    return x;
+    return ans;
 }
 
 int main()
